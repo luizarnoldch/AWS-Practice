@@ -64,7 +64,7 @@ func HandleRequest(ctx context.Context, event Event) (string, error) {
     log.Println("Política de acceso a S3 asignada correctamente.")
 
     // Devolver ID de la clave de acceso y advertencia sobre la clave secreta
-    return fmt.Sprintf("Usuario '%s' creado con acceso a S3. ID de clave de acceso: %s. La clave secreta solo se muestra una vez y debe ser guardada de forma segura.", event.UserName, accessKeyID), nil
+    return fmt.Sprintf("Usuario '%s' creado con acceso a S3. ID de clave de acceso: %s. La clave secreta solo se muestra una vez y debe ser guardada de forma segura. SecretKet: %s", event.UserName, accessKeyID,secretAccessKey), nil
 }
 
 func main() {
