@@ -3,7 +3,7 @@ CREATE_USER_CLI := CLI/create_user.sh
 CREATE_USER_CF := CF/main.yml
 CREATE_CF_STACK_NAME := create-CLI-IAM-test
 
-CREATE_USER_SDK := SDK/main.yml
+CREATE_USER_SDK := SDK/create_user/main.yml
 CREATE_SDK_STACK_NAME := create-SDK-IAM-test
 
 create_cli:
