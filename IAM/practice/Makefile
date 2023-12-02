@@ -82,5 +82,5 @@ delete_cf:
 
 
 tt:
-	create_sdk
-	delete_sdk
+	make create_sdk
+	make delete_sdk
