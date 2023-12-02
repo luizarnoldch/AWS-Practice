@@ -3,7 +3,7 @@ Resources:
   IAMUser:
     Type: AWS::IAM::User
     Properties:
-      UserName: nuevoUsuario_CloudFormation
+      UserName: nuevoUsuario
 
   AccessKey:
     Type: AWS::IAM::AccessKey
@@ -11,13 +11,13 @@ Resources:
       UserName: !Ref IAMUser
 
   UserPolicyAttachment:
-    Type: AWS::IAM::Policy
+    Type: AWS::IAM::ManagedPolicy
     Properties:
-      PolicyName: "AccesoS3"
+      ManagedPolicyName: AccesoS3
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
-          - Effect: "Allow"
+          - Effect: Allow
             Action: "s3:*"
             Resource: "*"
       Users:
@@ -25,7 +25,9 @@ Resources:
 
 Outputs:
   AccessKeyId:
-    Description: "Clave de Acceso para el usuario IAM"
+    Description: "ID de la Clave de Acceso para el usuario IAM"
     Value: !Ref AccessKey
-    Export:
-      Name: AccessKeyId
+
+  SecretAccessKey:
+    Description: "Clave Secreta de Acceso para el usuario IAM"
+    Value: !GetAtt AccessKey.SecretAccessKey
