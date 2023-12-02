@@ -26,7 +26,7 @@ test_create_sdk:
 
 create_sdk:
 	make destroy_create_sdk
-	sleep 7
+	sleep 10
 	make build_create_sdk
 	make deploy_create_sdk
 	sleep 3
@@ -35,7 +35,7 @@ create_sdk:
 
 create_cf:
 	make deploy_create_cf
-	sleep 7
+	sleep 10
 	make destroy_create_cf
 
 # Delete User
@@ -67,7 +67,7 @@ test_delete_sdk:
 
 delete_sdk:
 	make destroy_delete_sdk
-	sleep 7
+	sleep 10
 	make build_delete_sdk
 	make deploy_delete_sdk
 	sleep 3
@@ -76,6 +76,11 @@ delete_sdk:
 
 delete_cf:
 	make deploy_delete_cf
-	sleep 7
+	sleep 10
 	make destroy_delete_cf
 	make destroy_delete_sdk
+
+
+tt:
+	create_sdk
+	delete_sdk
