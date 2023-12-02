@@ -1,11 +1,10 @@
 CREATE_USER_CLI := CLI/create_user.sh
 
 CREATE_USER_CF := CF/main.yml
-CREATE_CF_STACK_NAME := create_CLI_IAM_test
+CREATE_CF_STACK_NAME := create-CLI-IAM-test
 
 CREATE_USER_SDK := SDK/main.yml
-CREATE_SDK_STACK_NAME := create_SDK_IAM_test
-
+CREATE_SDK_STACK_NAME := create-SDK-IAM-test
 
 create_cli:
 	./${CREATE_USER_CLI}
