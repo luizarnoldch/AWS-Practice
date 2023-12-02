@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  IAMUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: nuevoUsuario_CloudFormation
+
+  AccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref IAMUser
+
+  UserPolicyAttachment:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: "AccesoS3"
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Action: "s3:*"
+            Resource: "*"
+      Users:
+        - !Ref IAMUser
+
+Outputs:
+  AccessKeyId:
+    Description: "Clave de Acceso para el usuario IAM"
+    Value: !Ref AccessKey
+    Export:
+      Name: AccessKeyId
