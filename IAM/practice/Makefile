@@ -39,13 +39,13 @@ create_cf:
 
 # Delete User
 
-DELETE_USER_CLI := CLI/create_user.sh
+DELETE_USER_CLI := CLI/delete_user.sh
 
 DELETE_USER_CF := CF/main.yml
-DELETE_CF_STACK_NAME := create-CLI-IAM-test
+DELETE_CF_STACK_NAME := delete-CLI-IAM-test
 
-DELETE_USER_SDK := SDK/create_user/main.yml
-DELETE_SDK_STACK_NAME := create-SDK-IAM-test
+DELETE_USER_SDK := SDK/delete_user/main.yml
+DELETE_SDK_STACK_NAME := delete-SDK-IAM-test
 
 delete_cli:
 	./${DELETE_USER_CLI}
