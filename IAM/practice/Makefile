@@ -31,6 +31,7 @@ create_sdk:
 	make deploy_create_sdk
 	sleep 3
 	make test_create_sdk
+	make destroy_create_sdk
 
 create_cf:
 	make deploy_create_cf
@@ -71,8 +72,10 @@ delete_sdk:
 	make deploy_delete_sdk
 	sleep 3
 	make test_delete_sdk
+	make destroy_delete_sdk
 
 delete_cf:
 	make deploy_delete_cf
 	sleep 7
 	make destroy_delete_cf
+	make destroy_delete_sdk
