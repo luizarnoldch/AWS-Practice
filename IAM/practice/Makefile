@@ -25,10 +25,13 @@ test_create_sdk:
 
 create_sdk:
 	make destroy_create_sdk
+	sleep 7
 	make build_create_sdk
 	make deploy_create_sdk
+	sleep 3
 	make test_create_sdk
 
 create_cf:
 	make deploy_create_cf
+	sleep 7
 	make destroy_create_cf
