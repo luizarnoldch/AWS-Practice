@@ -6,7 +6,7 @@ export CGO_ENABLED="0"
 
 build_lambda() {
   go build -o bootstrap -tags lambda.norpc
-  zip main.zip bootstrap
+  zip ./main.zip bootstrap
   rm -rf bootstrap
 }
 
