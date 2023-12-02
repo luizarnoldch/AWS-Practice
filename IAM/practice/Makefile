@@ -19,9 +19,9 @@ deploy_create_sdk:
 destroy_create_sdk:
 	aws cloudformation delete-stack --stack-name $(CREATE_SDK_STACK_NAME)
 build_create_sdk:
-	./SDK/build.sh
+	./SDK/create_user/build.sh
 test_create_sdk:
-	./SDK/test.sh
+	./SDK/create_user/test.sh
 
 create_sdk:
 	make destroy_create_sdk
