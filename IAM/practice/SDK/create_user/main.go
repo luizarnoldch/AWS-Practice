@@ -37,6 +37,20 @@ func HandleRequest(ctx context.Context, event Event) (string, error) {
     }
     log.Printf("Usuario IAM creado: %s", *createUserOutput.User.UserName)
 
+    // Crear clave de acceso (Access Key)
+    log.Printf("Creando clave de acceso para el usuario: %s", event.UserName)
+    createAccessKeyOutput, err := iamClient.CreateAccessKey(ctx, &iam.CreateAccessKeyInput{
+        UserName: aws.String(event.UserName),
+    })
+    if err != nil {
+        log.Fatalf("Error creando la clave de acceso: %s", err)
+        return "", fmt.Errorf("error creando la clave de acceso: %s", err)
+    }
+    accessKeyID := *createAccessKeyOutput.AccessKey.AccessKeyId
+    secretAccessKey := *createAccessKeyOutput.AccessKey.SecretAccessKey
+    log.Printf("Clave de acceso creada: %s", accessKeyID)
+    log.Printf("Clave secreata de acceso creada: %s", secretAccessKey)
+
     // Asignar política de acceso a S3
     log.Printf("Asignando política de acceso a S3 al usuario: %s", event.UserName)
     _, err = iamClient.AttachUserPolicy(ctx, &iam.AttachUserPolicyInput{
@@ -49,7 +63,8 @@ func HandleRequest(ctx context.Context, event Event) (string, error) {
     }
     log.Println("Política de acceso a S3 asignada correctamente.")
 
-    return fmt.Sprintf("Usuario '%s' creado con acceso a S3", event.UserName), nil
+    // Devolver ID de la clave de acceso y advertencia sobre la clave secreta
+    return fmt.Sprintf("Usuario '%s' creado con acceso a S3. ID de clave de acceso: %s. La clave secreta solo se muestra una vez y debe ser guardada de forma segura.", event.UserName, accessKeyID), nil
 }
 
 func main() {
