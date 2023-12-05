@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: IAM Practice
+
+Resources:
+  DeleteGroupLambda:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      CodeUri: ./main.zip
+      FunctionName: !Sub "IAM_practice_DeleteGroup"
+      Handler: bootstrap
+      Runtime: provided.al2
+      MemorySize: 128
+      Timeout: 10
+      Policies:
+        - IAMFullAccess
+Outputs:
+  DeleteGroupLambda:
+    Description: "ARN de la función DeleteGroupLambda"
+    Value: !GetAtt DeleteGroupLambda.Arn
