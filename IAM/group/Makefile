@@ -1,10 +1,10 @@
 CREATE_GROUP_CLI := CLI/create_group.sh
 
 CREATE_GROUP_CF := CF/main.yml
-CREATE_CF_STACK_NAME := create-CLI-IAM-test
+CREATE_CF_STACK_NAME := create-CLI-IAM-test-group
 
 CREATE_GROUP_SDK := SDK/create_group/main.yml
-CREATE_SDK_STACK_NAME := create-SDK-IAM-test
+CREATE_SDK_STACK_NAME := create-SDK-IAM-test-group
 
 # Create User
 create_cli:

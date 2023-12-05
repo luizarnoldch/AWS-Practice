@@ -1,10 +1,10 @@
 CREATE_USER_CLI := CLI/create_user.sh
 
 CREATE_USER_CF := CF/main.yml
-CREATE_CF_STACK_NAME := create-CLI-IAM-test
+CREATE_CF_STACK_NAME := create-CLI-IAM-test-user
 
 CREATE_USER_SDK := SDK/create_user/main.yml
-CREATE_SDK_STACK_NAME := create-SDK-IAM-test
+CREATE_SDK_STACK_NAME := create-SDK-IAM-test-user
 
 # Create User
 create_cli:
@@ -43,10 +43,10 @@ create_cf:
 DELETE_USER_CLI := CLI/delete_user.sh
 
 DELETE_USER_CF := CF/main.yml
-DELETE_CF_STACK_NAME := delete-CLI-IAM-test
+DELETE_CF_STACK_NAME := delete-CLI-IAM-test-user
 
 DELETE_USER_SDK := SDK/delete_user/main.yml
-DELETE_SDK_STACK_NAME := delete-SDK-IAM-test
+DELETE_SDK_STACK_NAME := delete-SDK-IAM-test-user
 
 delete_cli:
 	./${DELETE_USER_CLI}
